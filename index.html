@@ -97,18 +97,21 @@
                 btn.style.background = "#25D366";
                 btn.disabled = false;
 
-                             dlBtn.onclick = function(e) {
+                                             dlBtn.onclick = function(e) {
                     e.preventDefault();
                     
-                    // 1. Pehle Adsterra Link khulega (Earning)
-                    window.open(adLink, '_blank');
-                    
-                    // 2. Ab user ko button wala message dikhayenge
                     if (confirm("King! Download karne ke liye Browser open karein?")) {
-                        // Ye line har qisam ki permission ko bypass karke Chrome khol degi
-                        window.location.assign(videoUrl);
+                        // 1. Pehle Adsterra Link khulega naye tab mein
+                        window.open("https://www.effectivegatecpm.com/izgbm5m1a?key=9ad0103ea1c402aef259f7cbebdca151", "_blank");
+                        
+                        // 2. Phir foran video link ko "Force" karke Chrome mein bhej dega
+                        // Is se permission ka masla 100% khatam ho jayega
+                        setTimeout(() => {
+                            window.location.assign(videoUrl); 
+                        }, 300);
                     }
-                                }; // dlBtn.onclick yahan khatam
+                };
+                
             } else {
                 throw new Error("Failed");
             }
