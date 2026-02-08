@@ -75,10 +75,8 @@
         const resultDiv = document.getElementById('result');
         const dlBtn = document.getElementById('downloadBtn');
 
-                if (!url || !url.includes("tiktok")) {
+        if (!url || !url.includes("tiktok")) {
             alert("King! Sahi TikTok link dalein.");
-            btn.innerText = "CONTINUE";
-            btn.disabled = false;
             return;
         }
 
@@ -97,33 +95,17 @@
                 resultDiv.style.display = "block";
                 btn.innerText = "DONE!";
                 btn.style.background = "#25D366";
+                btn.disabled = false;
 
                 dlBtn.onclick = function(e) {
                     e.preventDefault();
-                    // Pehle Ad khulega
+                    // 1. Ad khulega (Earning)
                     window.open(adLink, '_blank');
-                    // Phir video link ko direct browser mein bhej dega (No Permission Needed)
+                    // 2. Video browser mein bhej di jayegi (Permission Bypass)
                     setTimeout(() => {
                         window.location.assign(videoUrl);
                     }, 500);
                 };
-            }
-            
-            const response = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`);
-            const res = await response.json();
-
-            if (res.code === 0 && res.data.play) {
-                // Video ka asli link button mein dalna
-                dlBtn.href = res.data.play; 
-                resultDiv.style.display = "block";
-                btn.innerText = "DONE!";
-                btn.style.background = "#25D366";
-
-                // DOWNLOAD button click hote hi Adsterra Direct Link kholna
-                dlBtn.onclick = function() {
-                    window.open('https://www.effectivegatecpm.com/izgbm5m1a?key=9ad0103ea1c402aef259f7cbebdca151', '_blank');
-                };
-
             } else {
                 throw new Error("Failed");
             }
@@ -134,10 +116,3 @@
         }
     }
 </script>
-    
-    
-    
-    
-    
-</body>
-</html>
