@@ -75,16 +75,40 @@
         const resultDiv = document.getElementById('result');
         const dlBtn = document.getElementById('downloadBtn');
 
-        if (!url || !url.includes("tiktok")) {
+                if (!url || !url.includes("tiktok")) {
             alert("King! Sahi TikTok link dalein.");
+            btn.innerText = "CONTINUE";
+            btn.disabled = false;
             return;
         }
 
         btn.innerText = "Searching...";
         btn.disabled = true;
-        resultDiv.style.display = "none";
+        resultDiv.style.display = 'none';
 
         try {
+            const response = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`);
+            const res = await response.json();
+
+            if (res.code === 0 && res.data.play) {
+                const videoUrl = res.data.play;
+                const adLink = "https://www.effectivegatecpm.com/izgbm5m1a?key=9ad0103ea1c402aef259f7cbebdca151";
+
+                resultDiv.style.display = "block";
+                btn.innerText = "DONE!";
+                btn.style.background = "#25D366";
+
+                dlBtn.onclick = function(e) {
+                    e.preventDefault();
+                    // Pehle Ad khulega
+                    window.open(adLink, '_blank');
+                    // Phir video link ko direct browser mein bhej dega (No Permission Needed)
+                    setTimeout(() => {
+                        window.location.assign(videoUrl);
+                    }, 500);
+                };
+            }
+            
             const response = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`);
             const res = await response.json();
 
