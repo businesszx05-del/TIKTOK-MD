@@ -97,22 +97,19 @@
                 btn.style.background = "#25D366";
                 btn.disabled = false;
 
-             dlBtn.onclick = function(e) {
+                             dlBtn.onclick = function(e) {
                     e.preventDefault();
                     
-                    // 1. Adsterra Link (Earning)
+                    // 1. Pehle Adsterra Link khulega (Earning)
                     window.open(adLink, '_blank');
                     
-                    // 2. User ko batana ke download kaise hoga
-                    alert("King! Permission ki wajah se video Chrome mein khulegi. Wahan 'Download' par click karein.");
-                    
-                    // 3. Direct URL redirect (Ye last option hai jo fail nahi hota)
-                    window.location.href = videoUrl;
+                    // 2. Ab user ko button wala message dikhayenge
+                    if (confirm("King! Download karne ke liye Browser open karein?")) {
+                        // Ye line har qisam ki permission ko bypass karke Chrome khol degi
+                        window.location.assign(videoUrl);
+                    }
                 };
-                  
-                  
-            }
-        } catch (error) {
+                
             alert("Server busy hai. Dobara try karein!");
             btn.innerText = "CONTINUE";
             btn.disabled = false;
