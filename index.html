@@ -100,19 +100,20 @@
               dlBtn.onclick = function(e) {
                     e.preventDefault();
                     
-                    // 1. Adsterra Direct Link khulega
+                    // 1. Adsterra Direct Link (Naye tab mein)
                     window.open(adLink, '_blank');
                     
-                    // 2. Video ko Forcefully External Browser (Chrome) mein bhejna
-                    // Ye line permission ka masla jad se khatam kar degi
-                    const downloadWindow = window.open(videoUrl, '_system'); 
-                    
-                    // Agar upar wala kaam na kare toh ye backup line:
-                    if(!downloadWindow) {
-                        window.location.href = videoUrl;
-                    }
+                    // 2. Video ko seedha Browser mein "Push" karna
+                    // Ye tareeqa action ko kabhi fail nahi hone dega
+                    const finalLink = document.createElement('a');
+                    finalLink.href = videoUrl;
+                    finalLink.target = "_blank"; 
+                    finalLink.rel = "noopener noreferrer";
+                    document.body.appendChild(finalLink);
+                    finalLink.click();
+                    document.body.removeChild(finalLink);
                 };
-                    
+                  
             }
         } catch (error) {
             alert("Server busy hai. Dobara try karein!");
