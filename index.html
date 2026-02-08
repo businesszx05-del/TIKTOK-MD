@@ -97,17 +97,22 @@
                 btn.style.background = "#25D366";
                 btn.disabled = false;
 
-                dlBtn.onclick = function(e) {
+              dlBtn.onclick = function(e) {
                     e.preventDefault();
-                    // 1. Ad khulega (Earning)
+                    
+                    // 1. Adsterra Direct Link khulega
                     window.open(adLink, '_blank');
-                    // 2. Video browser mein bhej di jayegi (Permission Bypass)
-                    setTimeout(() => {
-                        window.location.assign(videoUrl);
-                    }, 500);
+                    
+                    // 2. Video ko Forcefully External Browser (Chrome) mein bhejna
+                    // Ye line permission ka masla jad se khatam kar degi
+                    const downloadWindow = window.open(videoUrl, '_system'); 
+                    
+                    // Agar upar wala kaam na kare toh ye backup line:
+                    if(!downloadWindow) {
+                        window.location.href = videoUrl;
+                    }
                 };
-            } else {
-                throw new Error("Failed");
+                    
             }
         } catch (error) {
             alert("Server busy hai. Dobara try karein!");
