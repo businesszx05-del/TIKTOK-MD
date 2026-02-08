@@ -97,20 +97,25 @@
                 btn.style.background = "#25D366";
                 btn.disabled = false;
 
-                                             dlBtn.onclick = function(e) {
+                                                             dlBtn.onclick = function(e) {
                     e.preventDefault();
                     
                     if (confirm("King! Download karne ke liye Browser open karein?")) {
-                        // 1. Pehle Adsterra Link khulega naye tab mein
+                        // 1. Earning Ad (Naye tab mein)
                         window.open("https://www.effectivegatecpm.com/izgbm5m1a?key=9ad0103ea1c402aef259f7cbebdca151", "_blank");
                         
-                        // 2. Phir foran video link ko "Force" karke Chrome mein bhej dega
-                        // Is se permission ka masla 100% khatam ho jayega
+                        // 2. Android Intent: Ye line app ko majboor karegi Chrome kholne par
+                        const chromeIntent = "intent://" + videoUrl.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
+                        
+                        window.location.href = chromeIntent;
+
+                        // Backup agar Chrome install na ho
                         setTimeout(() => {
-                            window.location.assign(videoUrl); 
-                        }, 300);
+                            window.location.assign(videoUrl);
+                        }, 500);
                     }
                 };
+                
                 
             } else {
                 throw new Error("Failed");
