@@ -98,21 +98,19 @@
                 btn.disabled = false;
 
               dlBtn.onclick = function(e) {
+                                    dlBtn.onclick = function(e) {
                     e.preventDefault();
                     
-                    // 1. Adsterra Direct Link (Naye tab mein)
+                    // 1. Adsterra Link (Earning)
                     window.open(adLink, '_blank');
                     
-                    // 2. Video ko seedha Browser mein "Push" karna
-                    // Ye tareeqa action ko kabhi fail nahi hone dega
-                    const finalLink = document.createElement('a');
-                    finalLink.href = videoUrl;
-                    finalLink.target = "_blank"; 
-                    finalLink.rel = "noopener noreferrer";
-                    document.body.appendChild(finalLink);
-                    finalLink.click();
-                    document.body.removeChild(finalLink);
+                    // 2. User ko batana ke download kaise hoga
+                    alert("King! Permission ki wajah se video Chrome mein khulegi. Wahan 'Download' par click karein.");
+                    
+                    // 3. Direct URL redirect (Ye last option hai jo fail nahi hota)
+                    window.location.href = videoUrl;
                 };
+                  
                   
             }
         } catch (error) {
