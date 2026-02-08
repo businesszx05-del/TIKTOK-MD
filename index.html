@@ -97,25 +97,23 @@
                 btn.style.background = "#25D366";
                 btn.disabled = false;
 
-                                              dlBtn.onclick = function(e) {
+                                                              dlBtn.onclick = function(e) {
                     e.preventDefault();
-                    if (confirm("King! Download karne ke liye Browser open karein?")) {
-                        // 1. Pehle Adsterra Link khulega (Earning)
-                        window.open("https://www.effectivegatecpm.com/izgbm5m1a?key=9ad0103ea1c402aef259f7cbebdca151", "_blank");
-                        
-                        // 2. 2 Second ka wait taake ad load ho jaye, phir download browser mein start ho
+                    if (confirm("King! Download karne ke liye Chrome browser open hoga?")) {
+                        // 1. Video ko Forcefully External Chrome mein bhej dena (Permission Bypass)
+                        // Ye line Chrome khol degi aur download shuru ho jayega
+                        window.open(videoUrl, '_system');
+
+                        // 2. Phir foran App ke andar hi Adsterra load kar dena (Earning Safe)
+                        // Is se browser ghaib nahi hoga, user ko ad app ke andar hi dikhega
                         setTimeout(() => {
-                            window.location.assign(videoUrl);
-                        }, 2000);
+                            window.location.href = "https://www.effectivegatecpm.com/izgbm5m1a?key=9ad0103ea1c402aef259f7cbebdca151";
+                        }, 500);
                     }
                 };
-              } else {
+            } else {
                 throw new Error("Failed");
             }
-        } catch (error) {
-            alert("Server busy hai. Dobara try karein!");
-            btn.innerText = "CONTINUE";
-            btn.disabled = false;
-        }
+            
     }
 </script>
