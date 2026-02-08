@@ -108,8 +108,11 @@
                         // Ye line har qisam ki permission ko bypass karke Chrome khol degi
                         window.location.assign(videoUrl);
                     }
-                };
-                
+                                }; // dlBtn.onclick yahan khatam
+            } else {
+                throw new Error("Failed");
+            }
+        } catch (error) {
             alert("Server busy hai. Dobara try karein!");
             btn.innerText = "CONTINUE";
             btn.disabled = false;
