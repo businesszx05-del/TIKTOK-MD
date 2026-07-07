@@ -1,239 +1,137 @@
-/* ===================================
-   Birthday Surprise - Premium UI
-   Part 1
-=================================== */
+/* ==========================
+   Desktop Birthday Layout
+========================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
 }
 
 body{
+    font-family:'Poppins',sans-serif;
     width:100%;
     height:100vh;
     overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background:#f8c8d3;
     position:relative;
-    background:linear-gradient(135deg,#ffd4e5,#ffc0d8,#ffb1cf,#ffa4c8);
-    background-size:400% 400%;
-    animation:bgMove 12s ease infinite;
 }
 
-@keyframes bgMove{
-
-    0%{
-        background-position:0% 50%;
-    }
-
-    50%{
-        background-position:100% 50%;
-    }
-
-    100%{
-        background-position:0% 50%;
-    }
-
-}
-
-/* Background Glow */
+/* Background */
 
 .background{
-
-    position:absolute;
+    position:fixed;
     inset:0;
-    overflow:hidden;
+    background:
+    radial-gradient(circle at top left,#ffd9e5 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#ffd2df 0%,transparent 35%),
+    linear-gradient(135deg,#ffd5df,#f8bfd0,#f6c5d5);
     z-index:-2;
-
 }
 
-.background::before{
+/* Decorative Balloons */
 
-    content:"";
-
+.top-balloon{
     position:absolute;
-
-    width:500px;
-    height:500px;
-
-    background:#ffffff55;
-
-    border-radius:50%;
-
-    filter:blur(100px);
-
-    top:-180px;
-    left:-180px;
-
+    top:0;
+    left:0;
+    width:760px;
+    z-index:5;
+    pointer-events:none;
+    animation:floatTop 4s ease-in-out infinite;
 }
 
-.background::after{
-
-    content:"";
-
+.right-balloon{
     position:absolute;
-
-    width:450px;
-    height:450px;
-
-    background:#ff8fc055;
-
-    border-radius:50%;
-
-    filter:blur(100px);
-
-    bottom:-180px;
-    right:-180px;
-
+    top:0;
+    right:0;
+    width:420px;
+    z-index:5;
+    pointer-events:none;
+    animation:floatRight 5s ease-in-out infinite;
 }
 
-/* Main Layout */
+/* Main Desktop Layout */
 
-.main-container{
-
-    width:1180px;
-    max-width:95%;
-
-    height:700px;
-
-    background:rgba(255,255,255,.18);
-
-    border:1px solid rgba(255,255,255,.35);
-
-    backdrop-filter:blur(18px);
-
-    border-radius:35px;
-
+.main-layout{
+    width:100%;
+    height:100vh;
     display:flex;
-
-    justify-content:space-between;
-
     align-items:center;
-
-    padding:50px;
-
-    box-shadow:0 25px 60px rgba(0,0,0,.15);
-
+    justify-content:space-between;
+    padding:90px 120px;
 }
 
 /* Left Side */
 
 .left-side{
-
     width:48%;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
 }
 
 .cute-girl{
-
-    width:100%;
-    max-width:420px;
-
+    width:520px;
+    max-width:100%;
     animation:girlFloat 4s ease-in-out infinite;
-
-}
-
-@keyframes girlFloat{
-
-    0%,100%{
-
-        transform:translateY(0px);
-
-    }
-
-    50%{
-
-        transform:translateY(-18px);
-
-    }
-
 }
 
 /* Right Side */
 
 .right-side{
-
     width:42%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+/* ==========================
+   Heading
+========================== */
+
+.right-side h1{
+
+    font-size:64px;
+
+    font-weight:800;
+
+    color:#ffffff;
+
+    line-height:1.1;
 
     text-align:center;
 
-}
-/* ================================
-   Balloons
-================================ */
+    text-shadow:0 5px 15px rgba(0,0,0,.12);
 
-.top-balloon{
-
-    position:absolute;
-
-    top:0;
-
-    left:0;
-
-    width:260px;
-
-    animation:balloonFloat 4s ease-in-out infinite;
-
-    z-index:5;
+    margin-bottom:18px;
 
 }
 
-.right-balloon{
+.subtitle{
 
-    position:absolute;
+    font-size:22px;
 
-    top:30px;
+    font-weight:500;
 
-    right:0;
+    color:#ffffff;
 
-    width:220px;
+    letter-spacing:1px;
 
-    animation:balloonFloat 5s ease-in-out infinite;
-
-    animation-delay:1s;
-
-    z-index:5;
+    margin-bottom:35px;
 
 }
 
-@keyframes balloonFloat{
-
-    0%,100%{
-
-        transform:translateY(0px);
-
-    }
-
-    50%{
-
-        transform:translateY(-18px);
-
-    }
-
-}
-
-/* ================================
+/* ==========================
    PIN Dots
-================================ */
+========================== */
 
 .pin-display{
 
     display:flex;
 
-    justify-content:center;
-
     gap:18px;
 
-    margin-bottom:20px;
+    margin-bottom:30px;
 
 }
 
@@ -245,9 +143,7 @@ body{
 
     border-radius:50%;
 
-    border:2px solid white;
-
-    background:transparent;
+    border:3px solid #ffffff;
 
     transition:.3s;
 
@@ -255,67 +151,67 @@ body{
 
 .pin-display span.active{
 
-    background:white;
+    background:#ffffff;
 
-    transform:scale(1.2);
+    transform:scale(1.25);
 
 }
 
-/* ================================
+/* ==========================
    Error
-================================ */
+========================== */
 
 #error{
 
-    height:25px;
+    height:30px;
 
     color:#ffffff;
 
+    font-size:18px;
+
     font-weight:600;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 
 }
 
-/* ================================
+/* ==========================
    Keypad
-================================ */
+========================== */
 
 .keypad{
 
     display:grid;
 
-    grid-template-columns:repeat(3,90px);
+    grid-template-columns:repeat(3,95px);
 
-    justify-content:center;
-
-    gap:18px;
+    gap:20px;
 
 }
 
 .keypad button{
 
-    width:90px;
+    width:95px;
 
-    height:90px;
+    height:95px;
 
     border:none;
 
     border-radius:50%;
 
-    cursor:pointer;
-
-    font-size:28px;
-
-    font-weight:600;
-
-    color:white;
-
     background:rgba(255,255,255,.22);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(18px);
 
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    color:#ffffff;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.12);
 
     transition:.25s;
 
@@ -323,9 +219,9 @@ body{
 
 .keypad button:hover{
 
-    transform:translateY(-5px);
+    transform:translateY(-6px);
 
-    background:rgba(255,255,255,.35);
+    background:rgba(255,255,255,.38);
 
 }
 
@@ -337,211 +233,69 @@ body{
 
 .icon-btn{
 
-    font-size:24px;
+    font-size:28px;
 
 }
-/* ================================
-   Responsive Design
-================================ */
+/* ==========================
+   Desktop Animations
+========================== */
 
-@media (max-width:1200px){
+@keyframes girlFloat{
 
-    .main-container{
-
-        width:95%;
-
-        padding:40px;
-
+    0%{
+        transform:translateY(0px);
     }
 
-}
-
-@media (max-width:992px){
-
-    body{
-
-        height:auto;
-
-        padding:30px 15px;
-
-        overflow:auto;
-
+    50%{
+        transform:translateY(-20px);
     }
 
-    .main-container{
-
-        flex-direction:column;
-
-        height:auto;
-
-        padding:35px 25px;
-
-        gap:30px;
-
-    }
-
-    .left-side,
-    .right-side{
-
-        width:100%;
-
-    }
-
-    .cute-girl{
-
-        max-width:320px;
-
-    }
-
-    .right-side h1{
-
-        font-size:34px;
-
-    }
-
-    .subtitle{
-
-        font-size:17px;
-
+    100%{
+        transform:translateY(0px);
     }
 
 }
 
-@media (max-width:768px){
+@keyframes floatTop{
 
-    .top-balloon{
-
-        width:170px;
-
+    0%{
+        transform:translateY(0px);
     }
 
-    .right-balloon{
-
-        width:150px;
-
+    50%{
+        transform:translateY(-12px);
     }
 
-    .cute-girl{
-
-        max-width:260px;
-
-    }
-
-    .right-side h1{
-
-        font-size:30px;
-
-    }
-
-    .keypad{
-
-        grid-template-columns:repeat(3,75px);
-
-        gap:15px;
-
-    }
-
-    .keypad button{
-
-        width:75px;
-
-        height:75px;
-
-        font-size:24px;
-
+    100%{
+        transform:translateY(0px);
     }
 
 }
 
-@media (max-width:480px){
+@keyframes floatRight{
 
-    body{
-
-        padding:15px;
-
+    0%{
+        transform:translateY(0px);
     }
 
-    .main-container{
-
-        padding:25px 18px;
-
-        border-radius:25px;
-
+    50%{
+        transform:translateY(-18px);
     }
 
-    .top-balloon{
-
-        width:120px;
-
-    }
-
-    .right-balloon{
-
-        width:110px;
-
-    }
-
-    .cute-girl{
-
-        max-width:220px;
-
-    }
-
-    .right-side h1{
-
-        font-size:24px;
-
-    }
-
-    .subtitle{
-
-        font-size:15px;
-
-        margin-bottom:20px;
-
-    }
-
-    .pin-display{
-
-        gap:12px;
-
-    }
-
-    .pin-display span{
-
-        width:16px;
-
-        height:16px;
-
-    }
-
-    .keypad{
-
-        grid-template-columns:repeat(3,65px);
-
-        gap:12px;
-
-    }
-
-    .keypad button{
-
-        width:65px;
-
-        height:65px;
-
-        font-size:22px;
-
+    100%{
+        transform:translateY(0px);
     }
 
 }
 
-/* ================================
-   Smooth Animation
-================================ */
+/* ==========================
+   Fade Animation
+========================== */
 
-.main-container{
+.left-side,
+.right-side{
 
-    animation:fadeIn .8s ease;
+    animation:fadeIn .9s ease;
 
 }
 
@@ -551,7 +305,7 @@ body{
 
         opacity:0;
 
-        transform:translateY(35px);
+        transform:translateY(40px);
 
     }
 
@@ -565,24 +319,39 @@ body{
 
 }
 
+/* ==========================
+   Extra Glow
+========================== */
+
 .right-side h1{
 
-    color:#ffffff;
-
-    font-size:42px;
-
-    font-weight:700;
-
-    margin-bottom:10px;
+    text-shadow:
+    0 0 15px rgba(255,255,255,.35),
+    0 8px 20px rgba(0,0,0,.12);
 
 }
 
-.subtitle{
+.keypad button{
 
-    color:#ffffff;
+    border:1px solid rgba(255,255,255,.35);
 
-    font-size:18px;
+}
 
-    margin-bottom:25px;
+.keypad button:hover{
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,.35),
+    0 15px 30px rgba(0,0,0,.15);
+
+}
+
+/* ==========================
+   Desktop Only
+========================== */
+
+body{
+
+    min-width:1366px;
+    min-height:768px;
 
 }
