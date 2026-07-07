@@ -1,52 +1,132 @@
-// 1. Apna Secret Passcode yahan set karein (e.g., '1214')
-const CORRECT_CODE = "1214"; 
-let inputCode = "";
+// ======================================
+// Birthday Surprise Pro
+// Secret PIN : 1234
+// ======================================
 
-// 2. Dots ko update karne ka function (Press hone par dot black ho jaye)
+let pin = "";
+const correctPin = "1234";
+
+const error = document.getElementById("error");
+
+// ---------------------
+// Update PIN Dots
+// ---------------------
 function updateDots() {
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((dot, index) => {
-        if (index < inputCode.length) {
-            dot.classList.add('active');
+
+    for (let i = 1; i <= 4; i++) {
+
+        const dot = document.getElementById("dot" + i);
+
+        if (i <= pin.length) {
+            dot.classList.add("active");
         } else {
-            dot.classList.remove('active');
+            dot.classList.remove("active");
         }
-    });
-}
 
-// 3. Number press karne ka function
-function pressKey(num) {
-    if (inputCode.length < 4) {
-        inputCode += num;
-        updateDots();
     }
+
 }
 
-// 4. 'C' (Clear) button ka function
-function clearCode() {
-    inputCode = "";
+// ---------------------
+// Number Press
+// ---------------------
+function press(number) {
+
+    if (pin.length >= 4) return;
+
+    pin += number;
+
+    error.innerHTML = "";
+    error.style.color = "#ffffff";
+
     updateDots();
+
 }
 
-// 5. '✓' (Check) button ka function
-function checkCode() {
-    // Agar poore 4 digits enter ho chuke hain
-    if (inputCode.length === 4) {
-        if (inputCode === CORRECT_CODE) {
-            // Agar code sahi hai toh passcode screen hide karo aur cake screen show karo
-            document.getElementById('screen-passcode').classList.add('hidden');
-            document.getElementById('screen-cake').classList.remove('hidden');
-        } else {
-            // Agar code galat hai
-            alert("Wrong Code! Try again ❤️");
-            clearCode();
-        }
-    } else {
-        alert("Please enter a 4-digit code first!");
+// ---------------------
+// Delete
+// ---------------------
+function clearPin() {
+
+    if (pin.length === 0) return;
+
+    pin = pin.slice(0, -1);
+
+    error.innerHTML = "";
+
+    updateDots();
+
+}
+
+// ---------------------
+// Check PIN
+// ---------------------
+function checkPin() {
+
+    if (pin.length < 4) {
+
+        error.style.color = "#FFD700";
+        error.innerHTML = "Enter 4 Digit PIN";
+
+        return;
+
     }
+
+    if (pin === correctPin) {
+
+        error.style.color = "#90EE90";
+        error.innerHTML = "✔ Access Granted";
+
+        document.querySelector(".container").style.transform = "scale(1.05)";
+
+        setTimeout(() => {
+
+            window.location.href = "cake.html";
+
+        }, 1000);
+
+    }
+
+    else {
+
+        error.style.color = "#FFD2D2";
+        error.innerHTML = "❌ Wrong PIN";
+
+        document.querySelector(".container").classList.add("shake");
+
+        setTimeout(() => {
+            document.querySelector(".container").classList.remove("shake");
+        }, 500);
+
+        pin = "";
+
+        updateDots();
+
+    }
+
 }
 
-// 6. Next page par blow button ka function
-function blowCandle() {
-    alert("Wish made! ✨ Happy Birthday!");
-}
+// ---------------------
+// Keyboard Support
+// ---------------------
+document.addEventListener("keydown", function (e) {
+
+    if (e.key >= "0" && e.key <= "9") {
+
+        press(Number(e.key));
+
+    }
+
+    else if (e.key === "Backspace") {
+
+        clearPin();
+
+    }
+
+    else if (e.key === "Enter") {
+
+        checkPin();
+
+    }
+
+});
