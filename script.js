@@ -1,14 +1,20 @@
+// ===================================
+// Birthday Surprise - Logic Controller
+// Secret PIN Password : 1234
+// ===================================
+
 let pin = "";
 const correctPin = "1234";
 
 const error = document.getElementById("error");
 
+// Update input layout elements
 function updateDots() {
     for (let i = 1; i <= 4; i++) {
         const dot = document.getElementById("dot" + i);
         if (i <= pin.length) {
             dot.classList.add("active");
-            dot.innerText = "❤"; 
+            dot.innerText = "❤"; // Box filling character indicator matching template video
         } else {
             dot.classList.remove("active");
             dot.innerText = "";
@@ -16,6 +22,7 @@ function updateDots() {
     }
 }
 
+// Press action implementation triggers
 function press(number) {
     if (pin.length >= 4) return;
     pin += number;
@@ -23,6 +30,7 @@ function press(number) {
     error.innerHTML = "";
 }
 
+// Erase digit backspace operation logic
 function clearPin() {
     if (pin.length > 0) {
         pin = pin.slice(0, -1);
@@ -31,6 +39,7 @@ function clearPin() {
     error.innerHTML = "";
 }
 
+// Input verification submission routine
 function checkPin() {
     if (pin.length < 4) {
         error.style.color = "#ffffff";
@@ -42,6 +51,7 @@ function checkPin() {
         error.style.color = "#90EE90";
         error.innerHTML = "Access Granted ❤️";
         
+        // Triggers gentle window zoom scaling framework
         document.querySelector(".main-container").style.transform = "scale(1.03)";
 
         setTimeout(() => {
@@ -56,6 +66,7 @@ function checkPin() {
     }
 }
 
+// Shake animation routine execution link
 function shake() {
     const box = document.querySelector(".main-container");
     box.animate([
@@ -69,6 +80,7 @@ function shake() {
     });
 }
 
+// Standard structural keyboard matrix listener loop binding config
 document.addEventListener("keydown", function(e){
     if(e.key >= "0" && e.key <= "9"){ press(e.key); }
     if(e.key === "Backspace"){ clearPin(); }
