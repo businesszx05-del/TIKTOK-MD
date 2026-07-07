@@ -1,14 +1,17 @@
-// ================================
-// Birthday Surprise Pro
-// Password: 1234
-// ================================
+// ===================================
+// Birthday Surprise
+// Password : 1234
+// ===================================
 
 let pin = "";
 const correctPin = "1234";
 
 const error = document.getElementById("error");
 
-// Fill PIN Dots
+// ================================
+// Update PIN Dots
+// ================================
+
 function updateDots() {
 
     for (let i = 1; i <= 4; i++) {
@@ -29,7 +32,10 @@ function updateDots() {
 
 }
 
+// ================================
 // Number Press
+// ================================
+
 function press(number) {
 
     if (pin.length >= 4) return;
@@ -42,7 +48,10 @@ function press(number) {
 
 }
 
-// Delete Last Digit
+// ================================
+// Delete
+// ================================
+
 function clearPin() {
 
     pin = pin.slice(0, -1);
@@ -51,10 +60,15 @@ function clearPin() {
 
 }
 
+// ================================
 // Check Password
+// ================================
+
 function checkPin() {
 
-    if (pin.length !== 4) {
+    if (pin.length < 4) {
+
+        error.style.color = "#ffffff";
 
         error.innerHTML = "Enter 4 Digit PIN";
 
@@ -64,35 +78,25 @@ function checkPin() {
 
     if (pin === correctPin) {
 
-        error.style.color = "#7CFC00";
+        error.style.color = "#90EE90";
+
         error.innerHTML = "Access Granted ❤️";
 
-        setTimeout(function () {
+        document.querySelector(".main-container").style.transform = "scale(1.03)";
+
+        setTimeout(() => {
 
             window.location.href = "cake.html";
 
-        }, 800);
+        }, 900);
 
-    }
-
-    else {
+    } else {
 
         error.style.color = "#ffffff";
+
         error.innerHTML = "Wrong Password ❌";
 
-        document.querySelector(".container").animate([
-
-            { transform: "translateX(-8px)" },
-            { transform: "translateX(8px)" },
-            { transform: "translateX(-8px)" },
-            { transform: "translateX(8px)" },
-            { transform: "translateX(0px)" }
-
-        ], {
-
-            duration: 350
-
-        });
+        shake();
 
         pin = "";
 
@@ -102,22 +106,53 @@ function checkPin() {
 
 }
 
-// Keyboard Support
-document.addEventListener("keydown", function (e) {
+// ================================
+// Shake Animation
+// ================================
 
-    if (e.key >= "0" && e.key <= "9") {
+function shake() {
+
+    const box = document.querySelector(".main-container");
+
+    box.animate([
+
+        { transform: "translateX(-10px)" },
+
+        { transform: "translateX(10px)" },
+
+        { transform: "translateX(-10px)" },
+
+        { transform: "translateX(10px)" },
+
+        { transform: "translateX(0px)" }
+
+    ], {
+
+        duration: 350
+
+    });
+
+}
+
+// ================================
+// Keyboard Support
+// ================================
+
+document.addEventListener("keydown", function(e){
+
+    if(e.key >= "0" && e.key <= "9"){
 
         press(e.key);
 
     }
 
-    if (e.key === "Backspace") {
+    if(e.key === "Backspace"){
 
         clearPin();
 
     }
 
-    if (e.key === "Enter") {
+    if(e.key === "Enter"){
 
         checkPin();
 
