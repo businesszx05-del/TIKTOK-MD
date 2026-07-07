@@ -1,0 +1,133 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:linear-gradient(135deg,#ff8fb1,#ff5f96,#ffb3c7);
+background-size:400% 400%;
+animation:bgMove 10s ease infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.background{
+position:absolute;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at 20% 20%,rgba(255,255,255,.25),transparent 20%),
+radial-gradient(circle at 80% 30%,rgba(255,255,255,.18),transparent 25%),
+radial-gradient(circle at 60% 80%,rgba(255,255,255,.18),transparent 20%);
+filter:blur(20px);
+z-index:-1;
+}
+
+.container{
+width:380px;
+max-width:92%;
+padding:35px;
+border-radius:30px;
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.35);
+box-shadow:0 20px 45px rgba(0,0,0,.18);
+text-align:center;
+}
+
+.top h1{
+font-size:32px;
+color:#fff;
+margin-bottom:8px;
+}
+
+.top p{
+color:#fff;
+opacity:.9;
+margin-bottom:25px;
+}
+
+.pin-display{
+display:flex;
+justify-content:center;
+gap:18px;
+margin-bottom:20px;
+}
+
+.pin-display span{
+width:18px;
+height:18px;
+border:2px solid white;
+border-radius:50%;
+background:transparent;
+transition:.3s;
+}
+
+.pin-display span.active{
+background:white;
+transform:scale(1.2);
+}
+
+#error{
+height:22px;
+color:#fff;
+font-weight:600;
+margin-bottom:15px;
+}
+
+.keypad{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.keypad button{
+height:68px;
+border:none;
+border-radius:18px;
+font-size:24px;
+font-weight:600;
+cursor:pointer;
+background:rgba(255,255,255,.22);
+color:white;
+backdrop-filter:blur(10px);
+transition:.25s;
+box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+
+.keypad button:hover{
+transform:translateY(-3px);
+background:rgba(255,255,255,.35);
+}
+
+.keypad button:active{
+transform:scale(.92);
+}
+
+@media(max-width:480px){
+
+.container{
+padding:25px;
+}
+
+.top h1{
+font-size:26px;
+}
+
+.keypad button{
+height:60px;
+font-size:22px;
+}
+
+}
