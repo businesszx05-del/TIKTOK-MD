@@ -1,162 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret Surprise ❤️</title>
 
-<style>
-*{box-sizing:border-box}
-html,body{margin:0;height:100%;overflow:hidden}
-body{
-background:linear-gradient(to bottom,#fdfcf0 0%,#d5a6bd 45%,#8e7cc3 100%);
-display:flex;
-flex-direction:column;
-align-items:center;
-font-family:Arial,sans-serif
-}
-.main-content{
-flex:1;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-width:90%;
-margin-top:40px
-}
-.logo-box{width:80px;margin-bottom:20px}
-.gradient-text{
-font-family:'Montserrat',sans-serif;
-font-size:30px;
-margin:0;
-text-align:center;
-background:linear-gradient(to right,#222 40%,#cc0000 85%);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent
-}
-.desc{
-font-size:13px;
-color:#333;
-text-align:center;
-margin:25px 0;
-padding:12px 15px
-}
-input{
-width:100%;
-padding:15px;
-border-radius:35px;
-border:none;
-margin-bottom:15px;
-text-align:center;
-font-size:14px;
-outline:none
-}
-.continue-btn{
-background:linear-gradient(to right,#2b1b17,#cc0000);
-color:white;
-padding:12px 50px;
-border:none;
-border-radius:40px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer
-}
-#result{display:none;margin-top:20px;text-align:center}
-.dl-link{
-display:inline-block;
-background:#25D366;
-color:white;
-padding:12px 30px;
-border-radius:25px;
-text-decoration:none;
-font-weight:bold
-}
-.footer{
-position:fixed;
-bottom:0;
-width:100%;
-text-align:center;
-font-size:10px;
-font-weight:bold;
-color:#444;
-padding:10px 0
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="main-content">
+<div class="container">
 
-<div class="logo-box">
-<svg viewBox="0 0 448 512">
-<path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0Z"/>
-</svg>
-</div>
+<h1>🔐 Enter Password</h1>
 
-<h1 class="gradient-text">WELCOME TO</h1>
-<h1 class="gradient-text">TIKTOK</h1>
-<h1 class="gradient-text" style="font-size:28px;">VIDEO DOWNLOADER</h1>
+<input
+type="password"
+id="password"
+maxlength="4"
+placeholder="****">
 
-<p class="desc">Save TikTok videos without watermark instantly!</p>
+<br>
 
-<input id="tiktokUrl" placeholder="Paste TikTok Link Here...">
-<button class="continue-btn" id="btn">CONTINUE</button>
+<button onclick="checkPassword()">
+Next →
+</button>
 
-<div id="result">
-<p style="font-size:12px;color:#333;margin-bottom:10px">
-Support us by watching one short ad ❤️
-</p>
-<a id="downloadBtn" class="dl-link" href="#">DOWNLOAD VIDEO</a>
-</div>
+<p id="error"></p>
 
 </div>
 
-<div class="footer">© POWERED BY<br>KING-SAIFI - TUCHXD</div>
-
-<script>
-document.addEventListener("DOMContentLoaded",()=>{
-
-const btn=document.getElementById("btn");
-const input=document.getElementById("tiktokUrl");
-const result=document.getElementById("result");
-const downloadBtn=document.getElementById("downloadBtn");
-
-btn.addEventListener("click",async()=>{
-const url=input.value.trim();
-if(!url.includes("tiktok")){
-alert("Sahi TikTok link paste karein");
-return;
-}
-
-btn.innerText="Processing...";
-btn.disabled=true;
-result.style.display="none";
-
-try{
-const r=await fetch("https://www.tikwm.com/api/?url="+encodeURIComponent(url));
-const j=await r.json();
-
-if(j.code===0 && j.data.play){
-const video=j.data.play;
-result.style.display="block";
-btn.innerText="READY";
-btn.disabled=false;
-
-downloadBtn.onclick=e=>{
-e.preventDefault();
-window.open("https://www.effectivegatecpm.com/izgbm5m1a?key=9ad0103ea1c402aef259f7cbebdca151","_blank");
-setTimeout(()=>window.open(video,"_blank"),1200);
-};
-}else throw 0;
-}catch{
-alert("Server busy, thori dair baad try karein");
-btn.innerText="CONTINUE";
-btn.disabled=false;
-}
-});
-
-});
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
