@@ -1,91 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Birthday Surprise</title>
+    <title>Birthday Surprise</title>
 
-<link rel="stylesheet" href="style.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="background"></div>
+    <!-- Background -->
+    <div class="background"></div>
 
-<img
-src="https://i.postimg.cc/pLqPpgSv/1783407299513.png"
-class="balloon-left"
-alt="Left Balloon">
+    <!-- Top Left Balloon -->
+    <img src="https://i.postimg.cc/pLqPpgSv/1783407299513.png"
+        class="top-balloon"
+        alt="Top Balloon">
 
-<img
-src="https://i.postimg.cc/zG5fLwXp/1783407216563.png"
-class="balloon-right"
-alt="Right Balloon">
+    <!-- Right Balloon -->
+    <img src="https://i.postimg.cc/zG5fLwXp/1783407216563.png"
+        class="right-balloon"
+        alt="Right Balloon">
 
-<div class="container">
+    <!-- Main Layout -->
+    <div class="main-container">
 
-<img
-src="https://i.postimg.cc/prHSQJGk/1783407025709.png"
-class="cute-girl"
-alt="Birthday Girl">
+        <!-- Left Side -->
+        <div class="left-side">
 
-<h1>🎉 Birthday Surprise 🎉</h1>
+            <img src="https://i.postimg.cc/prHSQJGk/1783407025709.png"
+                class="cute-girl"
+                alt="Cute Illustration">
 
-<p class="subtitle">
-Enter Your Secret PIN
-</p>
+        </div>
 
-<div class="pin-display">
+        <!-- Right Side -->
+        <div class="right-side">
+                <button onclick="press(1)">1</button>
+                <button onclick="press(2)">2</button>
+                <button onclick="press(3)">3</button>
 
-<span id="dot1"></span>
-<span id="dot2"></span>
-<span id="dot3"></span>
-<span id="dot4"></span>
+                <button onclick="press(4)">4</button>
+                <button onclick="press(5)">5</button>
+                <button onclick="press(6)">6</button>
 
-</div>
+                <button onclick="press(7)">7</button>
+                <button onclick="press(8)">8</button>
+                <button onclick="press(9)">9</button>
 
-<p id="error"></p>
+                <button class="icon-btn" onclick="clearPin()">
+                    <i class="fa-solid fa-delete-left"></i>
+                </button>
 
-<div class="keypad">
+                <button onclick="press(0)">0</button>
 
-<button onclick="press(1)">1</button>
-<button onclick="press(2)">2</button>
-<button onclick="press(3)">3</button>
+                <button class="icon-btn" onclick="checkPin()">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
 
-<button onclick="press(4)">4</button>
-<button onclick="press(5)">5</button>
-<button onclick="press(6)">6</button>
+            </div>
 
-<button onclick="press(7)">7</button>
-<button onclick="press(8)">8</button>
-<button onclick="press(9)">9</button>
+        </div>
 
-<button class="icon-btn" onclick="clearPin()">
-<i class="fa-solid fa-delete-left"></i>
-</button>
+    </div>
 
-<button onclick="press(0)">0</button>
-
-<button class="icon-btn" onclick="checkPin()">
-<i class="fa-solid fa-arrow-right"></i>
-</button>
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
+
+            <h1>
+                🎉 Birthday Surprise 🎉
+            </h1>
+
+            <p class="subtitle">
+                Enter Your Secret PIN
+            </p>
+
+            <div class="pin-display">
+
+                <span id="dot1"></span>
+                <span id="dot2"></span>
+                <span id="dot3"></span>
+                <span id="dot4"></span>
+
+            </div>
+
+            <p id="error"></p>
+
+            <div class="keypad">
