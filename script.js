@@ -1,77 +1,52 @@
-// ===============================
-// Birthday Surprise Pro
-// Password: 1234
-// ===============================
+// 1. Apna Secret Passcode yahan set karein (e.g., '1214')
+const CORRECT_CODE = "1214"; 
+let inputCode = "";
 
-let pin = "";
-const correctPin = "1234";
-
-// Update PIN dots
+// 2. Dots ko update karne ka function (Press hone par dot black ho jaye)
 function updateDots() {
-    for (let i = 1; i <= 4; i++) {
-        const dot = document.getElementById("dot" + i);
-
-        if (i <= pin.length) {
-            dot.classList.add("active");
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        if (index < inputCode.length) {
+            dot.classList.add('active');
         } else {
-            dot.classList.remove("active");
+            dot.classList.remove('active');
         }
-    }
+    });
 }
 
-// Number Press
-function press(number) {
-
-    if (pin.length >= 4) return;
-
-    pin += number;
-
-    updateDots();
-
-}
-
-// Delete
-function clearPin() {
-
-    pin = pin.slice(0, -1);
-
-    updateDots();
-
-}
-
-// Check Password
-function checkPin() {
-
-    const error = document.getElementById("error");
-
-    if (pin.length < 4) {
-
-        error.innerHTML = "Enter 4-digit PIN";
-
-        return;
-
-    }
-
-    if (pin === correctPin) {
-
-        error.style.color = "#90EE90";
-        error.innerHTML = "✔ Access Granted";
-
-        setTimeout(() => {
-
-            window.location.href = "cake.html";
-
-        }, 800);
-
-    } else {
-
-        error.style.color = "#FFD2D2";
-        error.innerHTML = "❌ Wrong PIN";
-
-        pin = "";
-
+// 3. Number press karne ka function
+function pressKey(num) {
+    if (inputCode.length < 4) {
+        inputCode += num;
         updateDots();
-
     }
+}
 
+// 4. 'C' (Clear) button ka function
+function clearCode() {
+    inputCode = "";
+    updateDots();
+}
+
+// 5. '✓' (Check) button ka function
+function checkCode() {
+    // Agar poore 4 digits enter ho chuke hain
+    if (inputCode.length === 4) {
+        if (inputCode === CORRECT_CODE) {
+            // Agar code sahi hai toh passcode screen hide karo aur cake screen show karo
+            document.getElementById('screen-passcode').classList.add('hidden');
+            document.getElementById('screen-cake').classList.remove('hidden');
+        } else {
+            // Agar code galat hai
+            alert("Wrong Code! Try again ❤️");
+            clearCode();
+        }
+    } else {
+        alert("Please enter a 4-digit code first!");
+    }
+}
+
+// 6. Next page par blow button ka function
+function blowCandle() {
+    alert("Wish made! ✨ Happy Birthday!");
 }
