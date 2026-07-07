@@ -1,133 +1,154 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-background:linear-gradient(135deg,#ff8fb1,#ff5f96,#ffb3c7);
-background-size:400% 400%;
-animation:bgMove 10s ease infinite;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffb3c6; /* Soft Pink Background */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-@keyframes bgMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+.main-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(135deg, #ffccd5 0%, #ffb3c6 100%);
 }
 
-.background{
-position:absolute;
-width:100%;
-height:100%;
-background:
-radial-gradient(circle at 20% 20%,rgba(255,255,255,.25),transparent 20%),
-radial-gradient(circle at 80% 30%,rgba(255,255,255,.18),transparent 25%),
-radial-gradient(circle at 60% 80%,rgba(255,255,255,.18),transparent 20%);
-filter:blur(20px);
-z-index:-1;
+/* Left & Right Layout split */
+.left-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Character bottom par touch kare */
+    padding-left: 5%;
+    z-index: 2;
 }
 
-.container{
-width:380px;
-max-width:92%;
-padding:35px;
-border-radius:30px;
-background:rgba(255,255,255,.18);
-backdrop-filter:blur(18px);
-border:1px solid rgba(255,255,255,.35);
-box-shadow:0 20px 45px rgba(0,0,0,.18);
-text-align:center;
+.character-img {
+    max-height: 85vh;
+    max-width: 100%;
+    object-fit: contain;
 }
 
-.top h1{
-font-size:32px;
-color:#fff;
-margin-bottom:8px;
+.right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    padding-right: 5%;
 }
 
-.top p{
-color:#fff;
-opacity:.9;
-margin-bottom:25px;
+/* Dots indicator style */
+.dots-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
-.pin-display{
-display:flex;
-justify-content:center;
-gap:18px;
-margin-bottom:20px;
+.dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #505050;
+    border-radius: 50%;
+    transition: background 0.2s;
 }
 
-.pin-display span{
-width:18px;
-height:18px;
-border:2px solid white;
-border-radius:50%;
-background:transparent;
-transition:.3s;
+.dot.active {
+    background-color: #505050; /* Black fill when pressed */
 }
 
-.pin-display span.active{
-background:white;
-transform:scale(1.2);
+/* Keypad Grid Styling */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-#error{
-height:22px;
-color:#fff;
-font-weight:600;
-margin-bottom:15px;
+.keypad button {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.4);
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s, transform 0.1s;
 }
 
-.keypad{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
+.keypad button span {
+    font-size: 9px;
+    font-weight: bold;
+    color: #404040;
+    margin-top: 2px;
 }
 
-.keypad button{
-height:68px;
-border:none;
-border-radius:18px;
-font-size:24px;
-font-weight:600;
-cursor:pointer;
-background:rgba(255,255,255,.22);
-color:white;
-backdrop-filter:blur(10px);
-transition:.25s;
-box-shadow:0 8px 18px rgba(0,0,0,.15);
+.keypad button:hover {
+    background: rgba(255, 255, 255, 0.7);
 }
 
-.keypad button:hover{
-transform:translateY(-3px);
-background:rgba(255,255,255,.35);
+.keypad button:active {
+    transform: scale(0.95);
 }
 
-.keypad button:active{
-transform:scale(.92);
+.utility-btn {
+    font-size: 18px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
 }
 
-@media(max-width:480px){
-
-.container{
-padding:25px;
+/* Decorative elements simulated (Can be replaced with real images later) */
+.birthday-banner {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
-.top h1{
-font-size:26px;
+/* System Controls */
+.hidden {
+    display: none !important;
 }
 
-.keypad button{
-height:60px;
-font-size:22px;
+.next-page {
+    width: 100vw;
+    height: 100vh;
+    background: #fff0f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column-reverse;
+    }
+    .left-section {
+        flex: 0.8;
+        align-items: center;
+    }
+    .character-img {
+        max-height: 40vh;
+    }
+    .right-section {
+        flex: 1.2;
+        padding: 20px 0;
+    }
 }
