@@ -3,106 +3,91 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>Birthday Surprise</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+<title>Birthday Surprise</title>
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
 
-    <!-- Background -->
-    <div class="background"></div>
+<!-- Background -->
 
-    <!-- Top Left Balloon -->
-    <img src="https://i.postimg.cc/pLqPpgSv/1783407299513.png"
-        class="top-balloon"
-        alt="Top Balloon">
+<div class="background"></div>
 
-    <!-- Right Balloon -->
-    <img src="https://i.postimg.cc/zG5fLwXp/1783407216563.png"
-        class="right-balloon"
-        alt="Right Balloon">
+<!-- Decorations -->
 
-    <!-- Main Layout -->
-    <div class="main-container">
+<img
+src="https://i.postimg.cc/pLqPpgSv/1783407299513.png"
+class="top-balloon"
+alt="Top Balloon">
 
-        <!-- Left Side -->
-        <div class="left-side">
+<img
+src="https://i.postimg.cc/zG5fLwXp/1783407216563.png"
+class="right-balloon"
+alt="Right Balloon">
 
-            <img src="https://i.postimg.cc/prHSQJGk/1783407025709.png"
-                class="cute-girl"
-                alt="Cute Illustration">
+<!-- Main Layout -->
 
-        </div>
+<div class="main-layout">
 
-        <!-- Right Side -->
-        <div class="right-side">
-                <button onclick="press(1)">1</button>
-                <button onclick="press(2)">2</button>
-                <button onclick="press(3)">3</button>
+<!-- LEFT SIDE -->
 
-                <button onclick="press(4)">4</button>
-                <button onclick="press(5)">5</button>
-                <button onclick="press(6)">6</button>
+<div class="left-side">
 
-                <button onclick="press(7)">7</button>
-                <button onclick="press(8)">8</button>
-                <button onclick="press(9)">9</button>
+<img
+src="https://i.postimg.cc/prHSQJGk/1783407025709.png"
+class="cute-girl"
+alt="Cute Girl">
 
-                <button class="icon-btn" onclick="clearPin()">
-                    <i class="fa-solid fa-delete-left"></i>
-                </button>
+</div>
 
-                <button onclick="press(0)">0</button>
+<!-- RIGHT SIDE -->
 
-                <button class="icon-btn" onclick="checkPin()">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
+<div class="right-side">
 
-            </div>
+<h1>
 
-        </div>
+🎉 Birthday <br>
 
-    </div>
+Surprise 🎉
 
-    <script src="script.js"></script>
+</h1>
 
-</body>
+<p class="subtitle">
 
-</html>
+Enter Your Secret PIN
 
-            <h1>
-                🎉 Birthday Surprise 🎉
-            </h1>
+</p>
 
-            <p class="subtitle">
-                Enter Your Secret PIN
-            </p>
+<div class="pin-display">
 
-            <div class="pin-display">
+<span id="dot1"></span>
 
-                <span id="dot1"></span>
-                <span id="dot2"></span>
-                <span id="dot3"></span>
-                <span id="dot4"></span>
+<span id="dot2"></span>
 
-            </div>
+<span id="dot3"></span>
 
-            <p id="error"></p>
+<span id="dot4"></span>
 
-            <div class="keypad">
+</div>
+
+<p id="error"></p>
