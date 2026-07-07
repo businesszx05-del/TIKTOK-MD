@@ -1,357 +1,295 @@
-/* ==========================
-   Desktop Birthday Layout
-========================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ========================================================
+   Universal Settings & Core Layout Reset
+   ======================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:'Poppins',sans-serif;
-    width:100%;
-    height:100vh;
-    overflow:hidden;
-    background:#f8c8d3;
-    position:relative;
+body {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #f8c8d3;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Background */
-
-.background{
-    position:fixed;
-    inset:0;
+/* Base Gradient Background Layer */
+.background {
+    position: fixed;
+    inset: 0;
     background:
-    radial-gradient(circle at top left,#ffd9e5 0%,transparent 35%),
-    radial-gradient(circle at bottom right,#ffd2df 0%,transparent 35%),
-    linear-gradient(135deg,#ffd5df,#f8bfd0,#f6c5d5);
-    z-index:-2;
+    radial-gradient(circle at top left, #ffd9e5 0%, transparent 35%),
+    radial-gradient(circle at bottom right, #ffd2df 0%, transparent 35%),
+    linear-gradient(135deg, #ffd5df, #f8bfd0, #f6c5d5);
+    z-index: -2;
 }
 
-/* Decorative Balloons */
-
-.top-balloon{
-    position:absolute;
-    top:0;
-    left:0;
-    width:760px;
-    z-index:5;
-    pointer-events:none;
-    animation:floatTop 4s ease-in-out infinite;
+/* ========================================================
+   Decorative Floating Elements (Balloons)
+   ======================================================== */
+.top-balloon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45vw;
+    max-width: 650px;
+    z-index: 1; 
+    pointer-events: none; /* Clicks ko block hone se bachane ke liye */
+    animation: floatTop 4s ease-in-out infinite;
 }
 
-.right-balloon{
-    position:absolute;
-    top:0;
-    right:0;
-    width:420px;
-    z-index:5;
-    pointer-events:none;
-    animation:floatRight 5s ease-in-out infinite;
+.right-balloon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25vw;
+    max-width: 380px;
+    z-index: 1;
+    pointer-events: none;
+    animation: floatRight 5s ease-in-out infinite;
 }
 
-/* Main Desktop Layout */
-
-.main-layout{
-    width:100%;
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:90px 120px;
+/* ========================================================
+   Main Core Interactive Wrapper Layout
+   ======================================================== */
+.main-layout {
+    width: 100%;
+    max-width: 1200px;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    position: relative;
+    z-index: 10; /* Hamesha balloons ke upar rahega */
+    transition: transform 0.4s ease; /* JavaScript animation scale link */
 }
 
-/* Left Side */
-
-.left-side{
-    width:48%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+/* Left Panel: Character Layout */
+.left-side {
+    width: 48%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.cute-girl{
-    width:520px;
-    max-width:100%;
-    animation:girlFloat 4s ease-in-out infinite;
+.cute-girl {
+    max-height: 72vh;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    animation: girlFloat 4s ease-in-out infinite;
 }
 
-/* Right Side */
-
-.right-side{
-    width:42%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-/* ==========================
-   Heading
-========================== */
-
-.right-side h1{
-
-    font-size:64px;
-
-    font-weight:800;
-
-    color:#ffffff;
-
-    line-height:1.1;
-
-    text-align:center;
-
-    text-shadow:0 5px 15px rgba(0,0,0,.12);
-
-    margin-bottom:18px;
-
+/* Right Panel: Content Column */
+.right-side {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.subtitle{
-
-    font-size:22px;
-
-    font-weight:500;
-
-    color:#ffffff;
-
-    letter-spacing:1px;
-
-    margin-bottom:35px;
-
+/* Text & Headings Formatting */
+.right-side h1 {
+    font-size: 44px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(255,255,255,.35), 0 5px 15px rgba(0,0,0,.12);
+    margin-bottom: 8px;
 }
 
-/* ==========================
-   PIN Dots
-========================== */
-
-.pin-display{
-
-    display:flex;
-
-    gap:18px;
-
-    margin-bottom:30px;
-
+.subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
 }
 
-.pin-display span{
-
-    width:18px;
-
-    height:18px;
-
-    border-radius:50%;
-
-    border:3px solid #ffffff;
-
-    transition:.3s;
-
+/* ========================================================
+   PIN Entry Boxes (Video Style Dabbay)
+   ======================================================== */
+.pin-display {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-.pin-display span.active{
-
-    background:#ffffff;
-
-    transform:scale(1.25);
-
+.pin-display span {
+    width: 50px;
+    height: 50px;
+    border: 2.5px solid #ffffff;
+    border-radius: 12px; /* Video style square rounded boxes */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ==========================
-   Error
-========================== */
-
-#error{
-
-    height:30px;
-
-    color:#ffffff;
-
-    font-size:18px;
-
-    font-weight:600;
-
-    margin-bottom:20px;
-
+/* Jab input active ho toh yeh state automatic call hogi */
+.pin-display span.active {
+    background: #ffffff;
+    color: #7A5C61;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
 }
 
-/* ==========================
-   Keypad
-========================== */
-
-.keypad{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,95px);
-
-    gap:20px;
-
+/* Error Field Display Alert */
+#error {
+    height: 25px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.keypad button{
-
-    width:95px;
-
-    height:95px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.22);
-
-    backdrop-filter:blur(18px);
-
-    color:#ffffff;
-
-    font-size:30px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    box-shadow:0 12px 25px rgba(0,0,0,.12);
-
-    transition:.25s;
-
+/* ========================================================
+   Keypad Management Layout (Pure CSS Hearts)
+   ======================================================== */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px 35px;
 }
 
-.keypad button:hover{
-
-    transform:translateY(-6px);
-
-    background:rgba(255,255,255,.38);
-
+/* Turning Basic Grid Buttons into CSS Heart Shapes */
+.keypad button {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    background-color: #f7a3b5; /* Soft Pink color for hearts */
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    transform: rotate(-45deg); /* Diamond angle for heart shapes */
+    cursor: pointer;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -4px 8px 15px rgba(0,0,0,0.06);
+    color: transparent; /* Direct text hide trick */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.keypad button:active{
-
-    transform:scale(.92);
-
+.keypad button::before,
+.keypad button::after {
+    content: "";
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    background-color: #f7a3b5;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
 }
 
-.icon-btn{
-
-    font-size:28px;
-
+.keypad button::before {
+    top: -32.5px;
+    left: 0;
 }
-/* ==========================
-   Desktop Animations
-========================== */
 
-@keyframes girlFloat{
+.keypad button::after {
+    left: 32.5px;
+    top: 0;
+}
 
-    0%{
-        transform:translateY(0px);
+/* Numbers/Icons ko wapas seedha (upright) karne ke liye */
+.keypad button span {
+    transform: rotate(45deg); /* Cancels button tilt to keep text vertical */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+/* Keypad Hover & Active Effects */
+.keypad button:hover,
+.keypad button:hover::before,
+.keypad button:hover::after {
+    background-color: #f58fa5; /* Darker soft pink */
+}
+
+.keypad button:hover {
+    transform: rotate(-45deg) translateY(-4px) translateX(4px);
+    box-shadow: -8px 12px 20px rgba(0,0,0,0.1), 0 0 15px rgba(255,255,255,0.15);
+}
+
+.keypad button:active {
+    transform: rotate(-45deg) scale(0.92);
+}
+
+.icon-btn i {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* ========================================================
+   Animation Keyframes
+   ======================================================== */
+@keyframes girlFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes floatTop {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes floatRight {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+.left-side, .right-side {
+    animation: fadeIn 0.9s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-
-    50%{
-        transform:translateY(-20px);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-    100%{
-        transform:translateY(0px);
-    }
-
 }
 
-@keyframes floatTop{
-
-    0%{
-        transform:translateY(0px);
+/* ========================================================
+   Responsive Adjustments for Medium/Small Screens
+   ======================================================== */
+@media (max-width: 950px) {
+    .main-layout {
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        height: auto;
+        padding: 20px;
     }
-
-    50%{
-        transform:translateY(-12px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
-
-}
-
-@keyframes floatRight{
-
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(-18px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
-
-}
-
-/* ==========================
-   Fade Animation
-========================== */
-
-.left-side,
-.right-side{
-
-    animation:fadeIn .9s ease;
-
-}
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(40px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-/* ==========================
-   Extra Glow
-========================== */
-
-.right-side h1{
-
-    text-shadow:
-    0 0 15px rgba(255,255,255,.35),
-    0 8px 20px rgba(0,0,0,.12);
-
-}
-
-.keypad button{
-
-    border:1px solid rgba(255,255,255,.35);
-
-}
-
-.keypad button:hover{
-
-    box-shadow:
-    0 0 20px rgba(255,255,255,.35),
-    0 15px 30px rgba(0,0,0,.15);
-
-}
-
-/* ==========================
-   Desktop Only
-========================== */
-
-body{
-
-    min-width:1366px;
-    min-height:768px;
-
+    .cute-girl { max-height: 40vh; }
+    .right-side h1 { font-size: 34px; }
+    .top-balloon, .right-balloon { opacity: 0.6; }
 }
