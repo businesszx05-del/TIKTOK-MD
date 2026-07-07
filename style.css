@@ -1,205 +1,169 @@
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    position:relative;
-    background:linear-gradient(135deg,#ff8fb1,#ff5f96,#ffb3c7);
-    background-size:400% 400%;
-    animation:bgMove 10s ease infinite;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:linear-gradient(135deg,#ff8ab5,#ff5d95,#ffb7cf);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
 }
 
 @keyframes bgMove{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 .background{
-    position:absolute;
-    inset:0;
-    background:
-    radial-gradient(circle at 20% 20%,rgba(255,255,255,.25),transparent 20%),
-    radial-gradient(circle at 80% 30%,rgba(255,255,255,.18),transparent 25%),
-    radial-gradient(circle at 60% 80%,rgba(255,255,255,.18),transparent 20%);
-    filter:blur(20px);
-    z-index:-2;
+position:absolute;
+inset:0;
+overflow:hidden;
 }
 
-/* ===== REAL BALLOONS ===== */
-
-.balloon-left{
-    position:absolute;
-    top:0;
-    left:0;
-    width:340px;
-    pointer-events:none;
-    z-index:-1;
-    animation:floatLeft 4s ease-in-out infinite;
+.background::before,
+.background::after{
+content:"";
+position:absolute;
+width:350px;
+height:350px;
+border-radius:50%;
+filter:blur(90px);
+opacity:.45;
+animation:float 10s ease-in-out infinite;
 }
 
-.balloon-right{
-    position:absolute;
-    top:0;
-    right:0;
-    width:260px;
-    pointer-events:none;
-    z-index:-1;
-    animation:floatRight 4s ease-in-out infinite;
+.background::before{
+background:#ffffff;
+top:-120px;
+left:-120px;
 }
 
-@keyframes floatLeft{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-15px);
-    }
+.background::after{
+background:#ffd6e8;
+bottom:-120px;
+right:-120px;
+animation-delay:5s;
 }
 
-@keyframes floatRight{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(15px);
-    }
+@keyframes float{
+0%,100%{
+transform:translateY(0px);
 }
-
-/* ===== MAIN CARD ===== */
+50%{
+transform:translateY(40px);
+}
+}
 
 .container{
-    width:380px;
-    max-width:92%;
-    padding:35px;
-    border-radius:30px;
-    text-align:center;
-    background:rgba(255,255,255,.18);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,.35);
-    box-shadow:0 20px 45px rgba(0,0,0,.18);
-    transition:.3s;
-    z-index:10;
+width:390px;
+max-width:92%;
+padding:35px;
+border-radius:30px;
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.35);
+box-shadow:0 20px 60px rgba(0,0,0,.2);
+text-align:center;
+z-index:2;
 }
 
 .top h1{
-    font-size:32px;
-    color:#fff;
-    margin-bottom:8px;
+color:#fff;
+font-size:32px;
+font-weight:700;
+margin-bottom:8px;
 }
 
 .top p{
-    color:#fff;
-    opacity:.9;
-    margin-bottom:25px;
+color:#fff;
+font-size:16px;
+margin-bottom:25px;
+opacity:.95;
 }
 
-/* ===== PIN ===== */
-
 .pin-display{
-    display:flex;
-    justify-content:center;
-    gap:18px;
-    margin-bottom:20px;
+display:flex;
+justify-content:center;
+gap:16px;
+margin-bottom:20px;
 }
 
 .pin-display span{
-    width:18px;
-    height:18px;
-    border:2px solid #fff;
-    border-radius:50%;
-    transition:.3s;
+width:18px;
+height:18px;
+border-radius:50%;
+border:2px solid #fff;
+background:transparent;
+transition:.3s;
 }
 
 .pin-display span.active{
-    background:#fff;
-    transform:scale(1.2);
+background:#fff;
+transform:scale(1.2);
 }
 
 #error{
-    height:22px;
-    margin-bottom:15px;
-    color:#fff;
-    font-weight:600;
+height:24px;
+font-weight:600;
+color:#fff;
+margin-bottom:18px;
 }
 
-/* ===== KEYPAD ===== */
-
 .keypad{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
 }
 
 .keypad button{
-    height:68px;
-    border:none;
-    border-radius:18px;
-    background:rgba(255,255,255,.22);
-    color:#fff;
-    font-size:24px;
-    font-weight:600;
-    cursor:pointer;
-    backdrop-filter:blur(10px);
-    transition:.25s;
-    box-shadow:0 8px 18px rgba(0,0,0,.15);
+height:70px;
+border:none;
+border-radius:20px;
+font-size:24px;
+font-weight:600;
+cursor:pointer;
+background:rgba(255,255,255,.22);
+color:#fff;
+backdrop-filter:blur(10px);
+transition:.25s;
+box-shadow:0 8px 18px rgba(0,0,0,.15);
 }
 
 .keypad button:hover{
-    transform:translateY(-3px);
-    background:rgba(255,255,255,.35);
+transform:translateY(-3px);
+background:rgba(255,255,255,.35);
 }
 
 .keypad button:active{
-    transform:scale(.92);
+transform:scale(.92);
 }
 
-/* ===== WRONG PIN SHAKE ===== */
-
-.shake{
-    animation:shake .45s;
+.icon-btn{
+font-size:22px;
 }
-
-@keyframes shake{
-    0%{transform:translateX(0);}
-    20%{transform:translateX(-8px);}
-    40%{transform:translateX(8px);}
-    60%{transform:translateX(-8px);}
-    80%{transform:translateX(8px);}
-    100%{transform:translateX(0);}
-}
-
-/* ===== MOBILE ===== */
 
 @media(max-width:480px){
 
-    .balloon-left{
-        width:190px;
-    }
+.container{
+padding:25px;
+}
 
-    .balloon-right{
-        width:150px;
-    }
+.top h1{
+font-size:27px;
+}
 
-    .container{
-        padding:25px;
-    }
-
-    .top h1{
-        font-size:26px;
-    }
-
-    .keypad button{
-        height:60px;
-        font-size:22px;
-    }
+.keypad button{
+height:62px;
+font-size:22px;
+}
 
 }
