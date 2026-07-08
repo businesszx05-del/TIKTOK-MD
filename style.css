@@ -1,3 +1,6 @@
+/* ========================================================
+   GLOBAL STYLES
+   ======================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -37,12 +40,11 @@ body {
     max-width: 480px;
     margin: auto;
     z-index: 10;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     animation: fadeIn 0.8s ease-out;
 }
 
 .cute-girl {
-    max-height: 25vh; /* Form elements ko jagah dene ke liye thoda space balanced */
+    max-height: 25vh;
     height: auto;
     width: auto;
     max-width: 100%;
@@ -51,6 +53,9 @@ body {
     animation: girlFloat 4s ease-in-out infinite;
 }
 
+/* ========================================================
+   INDEX.HTML (KEYPAD) STYLES
+   ======================================================== */
 .content-panel {
     width: 100%;
     display: flex;
@@ -66,18 +71,14 @@ body {
     color: #d62839;
     line-height: 1.3;
     text-align: center;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     margin-bottom: 5px;
-    letter-spacing: 0.5px;
 }
 
 .subtitle {
     font-size: 13px;
     font-weight: 500;
     color: #ffffff;
-    letter-spacing: 0.5px;
     margin-bottom: 12px;
-    opacity: 0.9;
 }
 
 .pin-display {
@@ -99,33 +100,15 @@ body {
     font-size: 22px;
     font-weight: bold;
     color: #ffffff;
-    transition: all 0.2s ease-in-out;
 }
 
-.pin-display span.active {
-    background: #ffffff;
-    color: #7A5C61;
-    transform: scale(1.06);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
-}
-
-#error {
-    height: 20px;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-/* BIGGER FIXED GRID LAYOUT WITH EXTRA GAP */
 .keypad {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 45px 55px; /* Kafi khula gap taake hearts aapas mein mix na hon */
+    gap: 45px 55px;
     padding: 10px 0;
 }
 
-/* MASSIVE BUTTON RESIZE (95px) */
 .keypad button {
     position: relative;
     width: 95px;  
@@ -140,7 +123,6 @@ body {
     justify-content: center;
     box-shadow: -6px 12px 22px rgba(0,0,0,0.07);
     color: transparent;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .keypad button::before,
@@ -151,45 +133,70 @@ body {
     height: 95px;
     background-color: #f7a3b5;
     border-radius: 50%;
-    transition: background-color 0.2s ease;
 }
 
-/* Mathematical realignment for 95px scale hearts */
 .keypad button::before { top: -47.5px; left: 0; }
 .keypad button::after { left: 47.5px; top: 0; }
 
 .keypad button span {
     transform: rotate(45deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    font-family: 'Poppins', sans-serif;
-    font-size: 26px; /* Bigger Font for clarity */
+    font-size: 26px;
     font-weight: 800;
     color: #ffffff;
+}
+
+/* ========================================================
+   BALOOM.HTML PAGE SPECIFIC STYLES
+   ======================================================== */
+.message-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.message-box {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
     width: 100%;
-    height: 100%;
+    text-align: center;
 }
 
-.keypad button:hover,
-.keypad button:hover::before,
-.keypad button:hover::after {
-    background-color: #f58fa5;
+.english-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: #d62839;
+    font-weight: 700;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
-.keypad button:hover {
-    transform: rotate(-45deg) translateY(-3px) translateX(3px);
-    box-shadow: -8px 14px 24px rgba(0,0,0,0.1);
+.urdu-text {
+    font-family: 'Poppins', sans-serif; 
+    font-size: 18px;
+    color: #d62839;
+    font-weight: 600;
+    line-height: 1.8;
+    margin-top: 20px;
+    direction: rtl;
 }
 
-.keypad button:active {
-    transform: rotate(-45deg) scale(0.92);
+.divider {
+    border: 0;
+    border-top: 1px solid #d62839;
+    margin: 15px 0;
+    opacity: 0.3;
 }
 
-.icon-btn i { font-size: 24px; color: #ffffff; }
-
-/* Animations */
+/* ========================================================
+   ANIMATIONS
+   ======================================================== */
 @keyframes girlFloat {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-8px); }
@@ -198,14 +205,4 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-/* Scaling patch for standard and short displays */
-@media (max-width: 400px) {
-    .keypad { gap: 35px 42px; }
-    .keypad button { width: 78px; height: 78px; margin-top: 25px; }
-    .keypad button::before, .keypad button::after { width: 78px; height: 78px; }
-    .keypad button::before { top: -39px; }
-    .keypad button::after { left: 39px; }
-    .keypad button span { font-size: 22px; }
 }
