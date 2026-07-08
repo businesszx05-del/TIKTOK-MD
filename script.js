@@ -54,8 +54,9 @@ function checkPin() {
         // Triggers gentle window zoom scaling framework
         document.querySelector(".main-container").style.transform = "scale(1.03)";
 
+        // Redirection to baloom.html updated here
         setTimeout(() => {
-            window.location.href = "cake.html"; 
+            window.location.href = "baloom.html"; 
         }, 900);
     } else {
         error.style.color = "#ffffff";
